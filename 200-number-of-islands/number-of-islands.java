@@ -6,7 +6,7 @@ public class pair {
         this.second = second;
     }
 }
-
+// WE can direct store array also in queue by writing Queue<int[]> q = new....
 class Solution {
     public void bfs(int i, int j,int[][] visited, char[][] grid){
         Queue<pair> q = new LinkedList<>();
@@ -47,6 +47,23 @@ class Solution {
 
         }
 
+
+    public void dfs(int r, int c, char[][] grid){
+        grid[r][c] = '0';
+        int n = grid.length;
+        int m = grid[0].length;
+        int[][] directions = {{-1,0},{1,0},{0,1},{0,-1}};
+        for(int[] dir : directions){
+            int nrow = r+dir[0];
+            int ncol = c+dir[1];
+            if(nrow>=0 && ncol>=0 && nrow<n && ncol<m && grid[nrow][ncol] == '1'){
+                dfs(nrow,ncol,grid);
+            }
+        }
+
+
+    }
+
     public int numIslands(char[][] grid) {
         
         int count =0;
@@ -58,7 +75,7 @@ class Solution {
             for(int j=0;j<c;j++){
                 if(grid[i][j] == '1' && visited[i][j] == 0){
                     ans++;
-                    bfs(i,j,visited,grid);
+                    dfs(i,j,grid);
 
                 }
             }
