@@ -9,9 +9,17 @@ class Solution {
             else count_1++;
         }
 
-        String ans = "1".repeat(count_1 -1) + "0".repeat(count_0)+"1";
-
-        return ans;
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < count_1 - 1; i++) {
+            result.append('1');
+        }
+        for (int i = 0; i < count_0; i++) {
+            result.append('0');
+        }
+        result.append('1');
+        
+        return result.toString();
+        // return ans;
         
     }
 }
