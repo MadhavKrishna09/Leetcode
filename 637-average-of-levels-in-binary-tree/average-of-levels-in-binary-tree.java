@@ -25,23 +25,20 @@ class Solution {
         while(!q.isEmpty()){
             int n = q.size();
             ArrayList<Integer> ar = new ArrayList<>();
+            double sum = 0;
 
-            while(n>0){
+            for (int i = 0; i < n; i++) {
                 TreeNode temp = q.poll();
-                ar.add(temp.val);
-                if(temp.left!=null) q.offer(temp.left);
-                if(temp.right!=null) q.offer(temp.right);
-                n--;
-                
+                sum += temp.val;
+                if (temp.left != null) q.offer(temp.left);
+                if (temp.right != null) q.offer(temp.right);
             }
             // level++;
             // if(level%2 == 0) Collections.reverse(ar);
-            double sum = 0;
-            for(int i = 0;i<ar.size();i++){
-                sum+=ar.get(i);
-            }
+            
+            
 
-            ans.add(sum/ar.size());
+            ans.add(sum/n);
 
         }
 
