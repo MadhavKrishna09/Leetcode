@@ -1,17 +1,21 @@
 class Solution {
     public int equalSubstring(String s, String t, int maxCost) {
-        int count = 0;
-        int j =0;
+        int windowStart = 0;
+        int count=0;
+        int cost = 0;
 
-        for(int i =0;i<s.length();i++){
-             maxCost -= Math.abs((int) s.charAt(i) - (int)t.charAt(i));
-            if(maxCost<0){ 
-                maxCost += Math.abs((int) s.charAt(j) - (int)t.charAt(j++));
+        for(int windowEnd = 0;windowEnd<s.length();windowEnd++){
+            cost  +=  Math.abs((int)s.charAt(windowEnd) - (int)t.charAt(windowEnd));
+
+            while(cost>maxCost){
+               cost -= Math.abs((int)s.charAt(windowStart) - (int)t.charAt(windowStart));
+               windowStart++;
+
             }
+
+            count = Math.max(count, windowEnd - windowStart +1);
         }
 
-        return s.length() - j;
-
+        return count;
     }
 }
-
