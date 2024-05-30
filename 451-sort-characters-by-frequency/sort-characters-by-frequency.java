@@ -3,12 +3,13 @@ class Solution {
         Map<Character,Integer> mp = new HashMap<>();
 
         for(char c:s.toCharArray()){
-            if(mp.containsKey(c)){
-                mp.put(c,mp.get(c)+1);
-            }
-            else{
-                mp.put(c,1);
-            }
+            // if(mp.containsKey(c)){
+            //     mp.put(c,mp.get(c)+1);
+            // }
+            // else{
+            //     mp.put(c,1);
+            // }
+            mp.put(c, mp.getOrDefault(c,0) +1);
         }
 
         List<Map.Entry<Character,Integer>> ls = new ArrayList<>(mp.entrySet());
