@@ -6,15 +6,16 @@ class Solution {
 
         for(int i=1;i<nums.length;i++){
             if(mp.containsKey(target-nums[i])) {
-                ans[0] = mp.get(target-nums[i]);
-                ans[1] = i;
-                break;
+                return new int[]{mp.get(target-nums[i]), i};
+                // ans[0] = mp.get(target-nums[i]);
+                // ans[1] = i;
+                // break;
             }
 
             mp.put(nums[i],i);
         }
 
-        return ans;
+        return new int[]{};
 
         
     }
