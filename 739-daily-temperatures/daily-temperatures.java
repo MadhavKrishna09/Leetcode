@@ -7,25 +7,18 @@ class Solution {
         ans[n-1] = 0;
 
         for(int i=n-2;i>=0;i--){
-            if(t[st.peek()] > t[i]){
-                ans[i]=st.peek() - i;
-                st.push(i);
-                
-            }
-            else {
-                while(!st.isEmpty() && t[st.peek()] <= t[i]){
+            while(!st.isEmpty() && t[st.peek()] <= t[i]){
                     st.pop();
 
                 }
                     
-                if(st.isEmpty()) ans[i] = 0;
-                else ans[i]=st.peek() - i;
-                st.push(i);
+            if(!st.isEmpty())
+                ans[i]=st.peek() - i;
+
+            st.push(i);
                 
             }
-        }
        
-
         return ans;
     }
 }
