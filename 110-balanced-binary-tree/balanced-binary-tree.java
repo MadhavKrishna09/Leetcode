@@ -15,23 +15,20 @@
  */
 class Solution {
     public boolean isBalanced(TreeNode root) {
-        int diff = height(root);
-
-        return  diff != -1;
-        
+        return checkBalance(root) != -1;
     }
 
-    public int height(TreeNode root){
-        if(root == null) return 0;
+    private int checkBalance(TreeNode node) {
+        if (node == null) return 0;
 
-        int leftL = height(root.left);
-        if(leftL == -1 ) return -1;
-        int rightL = height(root.right);
-        if(rightL == -1 ) return -1;
+        int leftHeight = checkBalance(node.left);
+        if (leftHeight == -1) return -1; // Left subtree is unbalanced
 
+        int rightHeight = checkBalance(node.right);
+        if (rightHeight == -1) return -1; // Right subtree is unbalanced
 
-        if(Math.abs(leftL - rightL) > 1) return -1;
+        if (Math.abs(leftHeight - rightHeight) > 1) return -1; // Current node is unbalanced
 
-        return Math.max(leftL,rightL)+1;
+        return 1 + Math.max(leftHeight, rightHeight); // Return actual height
     }
 }
