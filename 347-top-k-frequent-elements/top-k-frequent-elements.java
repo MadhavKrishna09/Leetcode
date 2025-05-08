@@ -1,43 +1,33 @@
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> mp = new HashMap<>();
-        // PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(
+            (a,b) -> mp.get(a) - mp.get(b)
+        );
 
         for(int i =0;i<nums.length;i++){
             mp.put(nums[i], mp.getOrDefault(nums[i],0) +1);
         }
+        // ArrayList<Integer> arr = new ArrayList<>();
+        
 
-        // for(int i =0;i<nums.length;i++){
-        //     minHeap.offer(nums[i]);
-        //     int freq = mp.get(nums[i]);
-        //     if( minHeap.size()<=k || freq > mp.get(minHeap.peek()))
-        //         minHeap.offer(nums[i]);
-
+        for(int i : mp.keySet()){
+            minHeap.offer(i);
+            if(minHeap.size() > k) {
+                minHeap.poll();
+            }
             
-
-        // }
-
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>((n1, n2) -> mp.get(n1) - mp.get(n2));
-
-        for(Integer key : mp.keySet()){
-            minHeap.offer(key);
-            // int freq = mp.get(key);
-            // if(mp.size()<= key)
-            //     minHeap.offer(key);
-            // else if(freq > mp.get(minHeap.peek()))
-            //     minHeap.offer(key);
-
-            if(minHeap.size() > k) minHeap.poll();
         }
 
         int[] ans = new int[k];
-        k--;
-
-        while(k>=0){
-            ans[k--] = minHeap.poll();
+        int i= 0;
+        while(!minHeap.isEmpty()){
+            ans[i++] = minHeap.poll();
         }
 
         return ans;
+
+        
 
         
     }
