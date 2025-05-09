@@ -24,12 +24,17 @@ class Solution {
                 break;
             }
             else if(nums[i] + nums[n-1] < target){
-                if(nums[i] <= nums[n-1]) i++;
-                else n--; 
+                // if(nums[i] <= nums[n-1]) i++;
+                // else n--; 
+                // n--;
+                i++;
             }
             else {
-                if(nums[i] <= nums[n-1]) n--;
-                else i++;
+                // if(nums[i] <= nums[n-1]) n--;
+                // else i++;
+                // i++;?
+                n--;
+
             }
         }
 
