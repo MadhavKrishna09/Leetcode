@@ -8,30 +8,41 @@ class Solution {
         for(int i:nums){
             q.offer(i);
         }
-        if(n%2==0){
         int j = k;
+
         for(int i = 0;i<j;i++){
-            // int temp = nums[i];
             nums[i] = nums[Math.abs(n-k)];
-            // nums[Math.abs(n-k)] = temp;
             k--;
         }
-
         for(int i = j;i<n;i++){
             nums[i] = q.poll();
         }
 
-        }
-        else{
-            int j = k;
-        for(int i = 0;i<j;i++){
-            nums[i] = nums[Math.abs(n-k)];
-            k--;
-        }
+
+        // if(n%2==0){
+        // int j = k;
+        // for(int i = 0;i<j;i++){
+        //     // int temp = nums[i];
+        //     nums[i] = nums[Math.abs(n-k)];
+        //     // nums[Math.abs(n-k)] = temp;
+        //     k--;
+        // }
+
+        // for(int i = j;i<n;i++){
+        //     nums[i] = q.poll();
+        // }
+
+        // }
+        // else{
+        //     int j = k;
+        // for(int i = 0;i<j;i++){
+        //     nums[i] = nums[Math.abs(n-k)];
+        //     k--;
+        // }
         
-        for(int i = j;i<n;i++){
-            nums[i] = q.poll();
-        }
-        }
+        // for(int i = j;i<n;i++){
+        //     nums[i] = q.poll();
+        // }
+        // }
     }
 }
