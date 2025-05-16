@@ -12,8 +12,8 @@ class Solution {
         int n = nums.length;
         k = k%n;
         // Queue<Integer> q = new LinkedList<>();
-        if(n==1) return;
-        if(k==0) return;
+        // if(n==1) return;
+        // if(k==0) return;
         // for(int i:nums){
         //     q.offer(i);
         // }
