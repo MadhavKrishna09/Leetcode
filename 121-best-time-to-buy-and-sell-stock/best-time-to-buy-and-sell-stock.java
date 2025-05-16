@@ -1,69 +1,18 @@
 class Solution {
-    public int maxProfit(int[] prices) {
-        int i =0, ans = 0;
-        int n = prices.length;
+    public int maxProfit(int[] p) {
+        int n = p.length;
+        if(n==1) return 0;
+        int i = 0;
         int j = 1;
-
+        int profit = 0;
         while(j<n){
-            int t = prices[j] - prices[i];
-            if(t>0){
-                j++;
-                ans = Math.max(t, ans);
-                // i++;
-            }
-            else {
+            profit = Math.max(profit, p[j] -p[i]);
+            if(p[j] < p[i]){
                 i = j;
-                j++;
             }
-            // ans = Math.max(prices[i] - prices[i], ans);
-
-
+            j++;
         }
-        return ans;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // int pre = 0;
-        // int n = prices.length;
-        // if(n==1) return 0;
-        // int succ = 1;
-
-        // int max= 0;
-
-        // while(succ<n){
-        //     if(prices[succ]<prices[pre]){
-        //         pre = succ;
-        //         succ++;
-        //     }
-        //     else{
-        //         // int buy = prices[pre];
-        //         max = Math.max(max, prices[succ] - prices[pre]);
-        //         succ++;
-                
-        //         // pre++;
-
-        //     }
-        // }
-
-        // return max;
-
-        
+        return profit;
     }
 }
