@@ -1,24 +1,35 @@
-import java.util.PriorityQueue;
-
 class KthLargest {
-    final int k;
-    final PriorityQueue<Integer> minHeap;
+    PriorityQueue<Integer> pq;
+    // int min = 
+    int k;
+
 
     public KthLargest(int k, int[] nums) {
+        pq = new PriorityQueue<>();
         this.k = k;
-        minHeap = new PriorityQueue<>();
-        for (int num : nums) {
-            add(num); // Add each number using the 'add' method
-        }
+        for(int i : nums ){
+            if(pq.size() < k || i>pq.peek()){
+                // pq.poll();
+                if(pq.size() >=k) pq.poll();
+                pq.offer(i);
+            }
+        }  
     }
-
+    
     public int add(int val) {
-        if (minHeap.size() < k) {
-            minHeap.offer(val); // Add to the heap if it's not full
-        } else if (val > minHeap.peek()) {
-            minHeap.poll();    // Remove the smallest if the new value is larger
-            minHeap.offer(val);
+        if(pq.isEmpty()) pq.offer(val);
+        if(pq.size() < k || val>pq.peek()){
+            if(pq.size() >=k) pq.poll();
+            pq.offer(val);
+            
         }
-        return minHeap.peek(); // Return the kth largest element
+        
+        return pq.peek();
     }
 }
+
+/**
+ * Your KthLargest object will be instantiated and called as such:
+ * KthLargest obj = new KthLargest(k, nums);
+ * int param_1 = obj.add(val);
+ */
