@@ -5,7 +5,7 @@ class Solution {
         for(int[] i : points){
             int x = i[0];
             int y = i[1];
-            double d = Math.sqrt(x*x + y*y);
+            double d = (x*x + y*y);
             if(pq.size() < k){
                 pq.offer(new double[]{x,y,d});
                 
