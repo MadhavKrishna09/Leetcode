@@ -6,7 +6,7 @@ class Solution {
         for(int i =0;i<=n;i++){
             for(int j=0;j<=amount;j++){
                 if(j==0) dp[i][j] = 0;
-                if(i==0) dp[i][j] = Integer.MAX_VALUE-1;
+                if(i==0) dp[i][j] = amount+1;
                 
                 
             }
@@ -24,7 +24,7 @@ class Solution {
             }
         }
 
-        return dp[n][amount] == Integer.MAX_VALUE-1?-1:dp[n][amount];
+        return dp[n][amount] == amount+1?-1:dp[n][amount];
 
     }
 
