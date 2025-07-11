@@ -20,6 +20,6 @@ class Solution {
         for(List<String> st : mp.values()){
             answer.add(st);
         }
-        return answer;
+        return new ArrayList<>(mp.values());
     }
 }
