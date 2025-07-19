@@ -26,13 +26,13 @@ class Solution {
         return root;
         
     }
-    public void helper(TreeNode left, TreeNode right){
-        if(left == null || right == null) return; 
-        // if(left.left==null || right.right==null) return;
-        TreeNode v = left;
-        left = right;
-        right = v;
-        // helper(left.left, right.right);
-        helper(left.right, right.left);
-    }
+    // public void helper(TreeNode left, TreeNode right){
+    //     if(left == null || right == null) return; 
+    //     // if(left.left==null || right.right==null) return;
+    //     TreeNode v = left;
+    //     left = right;
+    //     right = v;
+    //     // helper(left.left, right.right);
+    //     helper(left.right, right.left);
+    // }
 }
