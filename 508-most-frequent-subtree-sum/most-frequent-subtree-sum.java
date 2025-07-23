@@ -18,18 +18,24 @@ class Solution {
         Map<Integer, Integer> mp = new HashMap<>();
         int sum = 0;
         int s = treeSum(root, mp);
-        int max = Integer.MIN_VALUE;
-        for(int i:mp.values()){
-            max = Math.max(max, i);
-        }
+        // int max = Integer.MIN_VALUE;
+        // for(int i:mp.values()){
+        //     max = Math.max(max, i);
+        // }
 
         List<Integer> arr = new ArrayList<>();
-        for(Map.Entry<Integer, Integer> entry : mp.entrySet()){
-            if(entry.getValue().equals(max)){
-                arr.add(entry.getKey());
-            }
-        }
-
+int max = Integer.MIN_VALUE;
+for (Map.Entry<Integer, Integer> entry : mp.entrySet()) {
+    int freq = entry.getValue();
+    if (freq > max) {
+        arr.clear();
+        arr.add(entry.getKey());
+        max = freq;
+    } else if (freq == max) {
+        arr.add(entry.getKey());
+    }
+}
+    
         return arr.stream().mapToInt(i->i).toArray();
     }
 
